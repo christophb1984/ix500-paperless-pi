@@ -1,0 +1,2 @@
+# Fujitsu ScanSnap iX500, USB only. No world-readable USB device.
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="04c5", ATTR{idProduct}=="132b", GROUP="ix500", MODE="0660"

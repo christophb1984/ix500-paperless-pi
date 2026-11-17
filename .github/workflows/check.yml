@@ -1,0 +1,26 @@
+name: Checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  software:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Install test dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-pil python3-img2pdf python3-pypdf python3-flask python3-waitress curl shellcheck
+      - name: Behavioral tests
+        run: /usr/bin/python3 -m unittest discover -s tests -v
+      - name: Shell syntax and lint
+        run: |
+          bash -n install.sh update.sh uninstall.sh
+          shellcheck install.sh update.sh uninstall.sh
+      - name: Validate systemd units
+        run: systemd-analyze verify systemd/ix500-scan.service systemd/ix500-upload.service systemd/ix500-upload.timer systemd/ix500-web.service

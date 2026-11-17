@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodically deliver scans and check Paperless processing
+
+[Timer]
+OnBootSec=30s
+OnUnitInactiveSec=60s
+AccuracySec=5s
+Unit=ix500-upload.service
+
+[Install]
+WantedBy=timers.target

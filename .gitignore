@@ -1,0 +1,43 @@
+# Runtime data and secrets must stay outside the repository.
+config.json
+config.local.json
+*.local.json
+.env
+.env.*
+!.env.example
+secrets/
+state/
+*.nmconnection
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+*.log
+*.pdf
+*.tiff
+*.tif
+*.jpg
+*.png
+# Generated OS images / archives / build data
+*.img
+*.img.*
+*.zip
+*.tar.gz
+pi-gen/
+work/
+deploy/
+# Python / editors
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+.vscode/
+.idea/
+
+# Web authentication and local profile/control state
+web.json
+control*.json
+capabilities.json
+*-request.json
+*.bak

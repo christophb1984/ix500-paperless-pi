@@ -1,0 +1,31 @@
+[Unit]
+Description=ScanSnap iX500 button and duplex scanner
+After=local-fs.target
+ConditionPathExists=/etc/ix500-paperless/config.json
+
+[Service]
+Type=simple
+User=ix500
+Group=ix500
+ExecStart=/usr/bin/python3 /opt/ix500-paperless/appliance.py daemon
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=20
+KillMode=control-group
+StateDirectory=ix500-paperless
+StateDirectoryMode=0700
+UMask=0077
+Environment=LC_ALL=C PYTHONDONTWRITEBYTECODE=1
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+ReadWritePaths=/var/lib/ix500-paperless
+
+[Install]
+WantedBy=multi-user.target

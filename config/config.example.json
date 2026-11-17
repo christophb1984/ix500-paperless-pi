@@ -1,0 +1,16 @@
+{
+  "paperless_url": "https://paperless.example.org",
+  "paperless_token": "REPLACE_ON_TARGET_PI_ONLY",
+  "allow_http": false,
+  "ca_bundle": "",
+  "device": "",
+  "mode": "Color",
+  "dpi": 200,
+  "width_mm": 210,
+  "height_mm": 297,
+  "blank_percent": 0.0,
+  "poll_seconds": 1.0,
+  "scan_timeout": 900,
+  "min_free_mb": 512,
+  "blank_gray_threshold": 180
+}
